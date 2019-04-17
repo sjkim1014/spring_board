@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 매퍼 설정 -->
+<mapper namespace="web.dao.face.MemberDao">
+	<insert id="memberInsert" parameterType="web.dto.Member">
+		INSERT INTO MEMBER
+		(IDX, NAME, EMAIL, PHONE, JOIN_DATE, NICK, ID, PW )
+		VALUES 
+		(MEMBER_SEQ.NEXTVAL, #{name}, #{email}, #{phone}, SYSDATE, #{nick}, #{id}, #{pw} )
+	</insert>
+	
+	<select id="isMember" parameterType="map" resultType="int">
+		SELECT COUNT(*) FROM MEMBER	
+		WHERE ID = #{id } AND PW = #{pw }
+	</select>
+	
+	<select id="getNick" parameterType="String" resultType="String">
+		SELECT NICK FROM MEMBER
+		WHERE ID = #{id} 
+	</select>
+	
+</mapper>  
+

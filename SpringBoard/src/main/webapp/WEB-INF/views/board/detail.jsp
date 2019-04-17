@@ -13,12 +13,28 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"> </script>
 
-<body>
-	<style>
-td.noreply {
-	padding: 0 !important;
-}
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+		 $("#btnDelete").click(function() {
+			var delConfirm = confirm('정말로 삭제하시겠습니까?');	
+			if (delConfirm) {	
+				location.href = "/board/delete?board_no=${detail.board_no }";
+			} else {
+				return;
+			}
+		});
+	});
+
+</script>
+
+<style>
+	td.noreply {
+		padding: 0 !important;
+	}
 </style>
+
+<body>
 	<div class="container">
 
 		<h3>게시글 상세보기</h3>
@@ -57,14 +73,16 @@ td.noreply {
 
 		<div class="text-center">
 			<!-- 모두노출 -->
-			<a href="/board/list"><button id="btnList"
-					class="btn btn-primary">목록</button></a>
+			<a href="/board/list"><button id="btnList" class="btn btn-primary">목록</button></a>
 
 			<!-- 본인 작성글 에만 노출 -->
-			<a href="/board/update?board_no=${detail.board_no }"><button
-					id="btnUpdate" class="btn btn-info">수정</button></a>
+			<a href="/board/update?board_no=${detail.board_no }">
+				<button id="btnUpdate" class="btn btn-info">수정</button>
+			</a>
+			
 			<button id="btnDelete" class="btn btn-danger">삭제</button>
 
 		</div>
+	</div>
 </body>
 </html>

@@ -14,7 +14,37 @@
 	
 	<select id="getBoardDetail" resultType="web.dto.Board" parameterType="int">
 		SELECT * FROM BOARD
-		WHERE BOARD_NO = #{board_no }
+		WHERE BOARD_NO = #{board_no}
 	</select> 
+	
+	<insert id="insert" parameterType="map">
+		INSERT INTO BOARD
+		(BOARD_NO, TITLE, WRITER_ID, WRITER_NICK, HIT, CONTENT, WRITE_DATE)
+		VALUES
+		(board_seq.nextval, #{title}, #{id}, #{nick}, 0, #{content}, SYSDATE)
+	</insert>
+	
+	<update id="hitUp">
+		UPDATE BOARD
+		SET HIT = HIT+1
+		WHERE BOARD_NO = #{boardno}
+	</update>
+
+	<select id="getBoardByBno" parameterType="String" resultType="web.dto.Board">
+		SELECT * FROM BOARD 
+		WHERE BOARD_NO = #{board_no}
+	</select>
+	
+	<update id="updateBoard" parameterType="map">
+		UPDATE BOARD 
+		SET TITLE = #{title}, CONTENT = #{content}
+		WHERE BOARD_NO = #{board_no}
+	</update>
+	
+	<delete id="boardDelete" parameterType="String">
+		DELETE FROM BOARD 
+		WHERE BOARD_NO = #{board_no}
+	</delete>
+	
 </mapper>  
 

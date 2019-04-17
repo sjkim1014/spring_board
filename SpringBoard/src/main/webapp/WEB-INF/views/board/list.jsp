@@ -123,7 +123,7 @@ table tbody tr td {
 				<c:forEach items="${list }" var="list">
 					<tr>
 						<td>${list.board_no }</td>
-						<td><a href="/board/detail?boardno=${list.board_no }">${list.title }</a></td>
+						<td><a href="/board/detail?board_no=${list.board_no }">${list.title }</a></td>
 						<td>${list.writer_id }</td>
 						<td>${list.writer_nick }</td>
 						<td>${list.hit }</td>
